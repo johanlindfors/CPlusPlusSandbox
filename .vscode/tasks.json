@@ -1,0 +1,29 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "cmake generate",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-Bbuild",
+                "-G",
+                "Visual Studio 15"
+            ],
+            "group": "none"
+        },
+        {
+            "label": "cmake build",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "./build/"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
