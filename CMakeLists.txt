@@ -6,7 +6,7 @@ include_directories(
 )
 
 file(GLOB SOURCES 
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/source/*.cpp"
 )
 file(GLOB HEADERS
     "${CMAKE_CURRENT_SOURCE_DIR}/include/*.h"
