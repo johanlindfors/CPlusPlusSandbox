@@ -19,7 +19,7 @@ glm::mat4 getProjectionMatrix()
 // returns the view matrix calculated using Euler Angles and the LookAt Matrix
 glm::mat4 getViewMatrix()
 {
-    return glm::lookAt(glm::vec3(0.0f, 0.0f, 5.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    return glm::lookAt(glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 }
 
 int main(int argc, char **argv)
@@ -40,37 +40,42 @@ int main(int argc, char **argv)
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
     float vertices[] = {
-        // positions            // colors           // texture coords
-        -0.5f, -0.5f, -0.5f,    0.0f, 0.0f, -1.0f,  0.5f, 0.25f,
-        0.5f, -0.5f, -0.5f,     0.0f, 0.0f, -1.0f,  0.0f, 0.25f,
-        0.5f, 0.5f, -0.5f,      0.0f, 0.0f, -1.0f,  0.0f, 0.75f,
-        0.5f, 0.5f, -0.5f,      0.0f, 0.0f, -1.0f,  0.0f, 0.75f,
-        -0.5f, 0.5f, -0.5f,     0.0f, 0.0f, -1.0f,  0.5f, 0.75f,
-        -0.5f, -0.5f, -0.5f,    0.0f, 0.0f, -1.0f,  0.5f, 0.25f,
-        -0.5f, -0.5f, 0.5f,     0.0f, 0.0f, 1.0f,   1.0f, 0.25f,
-        0.5f, -0.5f, 0.5f,      0.0f, 0.0f, 1.0f,   1.0f, 0.75f,
-        0.5f, 0.5f, 0.5f,       0.0f, 0.0f, 1.0f,   0.5f, 0.75f,
-        0.5f, 0.5f, 0.5f,       0.0f, 0.0f, 1.0f,   0.5f, 0.75f,
-        -0.5f, 0.5f, 0.5f,      0.0f, 0.0f, 1.0f,   0.5f, 0.25f,
-        -0.5f, -0.5f, 0.5f,     0.0f, 0.0f, 1.0f,   1.0f, 0.25f,
-        -0.5f, 0.5f, 0.5f,      -1.0f, 0.0f, 0.0f,  1.0f, 0.75f,
-        -0.5f, 0.5f, -0.5f,     -1.0f, 0.0f, 0.0f,  0.5f, 0.75f,
-        -0.5f, -0.5f, -0.5f,    -1.0f, 0.0f, 0.0f,  0.5f, 0.25f,
-        -0.5f, -0.5f, -0.5f,    -1.0f, 0.0f, 0.0f,  0.5f, 0.25f,
-        -0.5f, -0.5f, 0.5f,     -1.0f, 0.0f, 0.0f,  1.0f, 0.25f,
-        -0.5f, 0.5f, 0.5f,      -1.0f, 0.0f, 0.0f,  1.0f, 0.75f,
-        0.5f, 0.5f, 0.5f,       1.0f, 0.0f, 0.0f,   1.0f, 0.75f,
-        0.5f, 0.5f, -0.5f,      1.0f, 0.0f, 0.0f,   1.0f, 0.25f,
-        0.5f, -0.5f, -0.5f,     1.0f, 0.0f, 0.0f,   0.5f, 0.25f,
-        0.5f, -0.5f, -0.5f,     1.0f, 0.0f, 0.0f,   0.5f, 0.25f,
-        0.5f, -0.5f, 0.5f,      1.0f, 0.0f, 0.0f,   0.5f, 0.75f,
-        0.5f, 0.5f, 0.5f,       1.0f, 0.0f, 0.0f,   1.0f, 0.75f,
-        -0.5f, -0.5f, -0.5f,    0.0f, -1.0f, 0.0f,  0.0f, 0.25f,
-        0.5f, -0.5f, -0.5f,     0.0f, -1.0f, 0.0f,  0.5f, 0.25f,
-        0.5f, -0.5f, 0.5f,      0.0f, -1.0f, 0.0f,  0.5f, 0.75f,
-        0.5f, -0.5f, 0.5f,      0.0f, -1.0f, 0.0f,  0.5f, 0.75f,
-        -0.5f, -0.5f, 0.5f,     0.0f, -1.0f, 0.0f,  0.0f, 0.75f,
-        -0.5f, -0.5f, -0.5f,    0.0f, -1.0f, 0.0f,  0.0f, 0.25f,
+        // positions            // normals          // texture coords
+        -0.5f, -0.5f, -0.5f,    0.0f, 0.0f, -1.0f,  0.5f, 0.75f,
+        0.5f, -0.5f, -0.5f,     0.0f, 0.0f, -1.0f,  0.0f, 0.75f,
+        0.5f, 0.5f, -0.5f,      0.0f, 0.0f, -1.0f,  0.0f, 0.25f,
+        0.5f, 0.5f, -0.5f,      0.0f, 0.0f, -1.0f,  0.0f, 0.25f,
+        -0.5f, 0.5f, -0.5f,     0.0f, 0.0f, -1.0f,  0.5f, 0.25f,
+        -0.5f, -0.5f, -0.5f,    0.0f, 0.0f, -1.0f,  0.5f, 0.75f,
+
+        -0.5f, -0.5f, 0.5f,     0.0f, 0.0f, 1.0f,   1.0f, 0.75f,
+        0.5f, -0.5f, 0.5f,      0.0f, 0.0f, 1.0f,   1.0f, 0.25f,
+        0.5f, 0.5f, 0.5f,       0.0f, 0.0f, 1.0f,   0.5f, 0.25f,
+        0.5f, 0.5f, 0.5f,       0.0f, 0.0f, 1.0f,   0.5f, 0.25f,
+        -0.5f, 0.5f, 0.5f,      0.0f, 0.0f, 1.0f,   0.5f, 0.75f,
+        -0.5f, -0.5f, 0.5f,     0.0f, 0.0f, 1.0f,   1.0f, 0.75f,
+
+        -0.5f, 0.5f, 0.5f,      -1.0f, 0.0f, 0.0f,  1.0f, 0.25f,
+        -0.5f, 0.5f, -0.5f,     -1.0f, 0.0f, 0.0f,  0.5f, 0.25f,
+        -0.5f, -0.5f, -0.5f,    -1.0f, 0.0f, 0.0f,  0.5f, 0.75f,
+        -0.5f, -0.5f, -0.5f,    -1.0f, 0.0f, 0.0f,  0.5f, 0.75f,
+        -0.5f, -0.5f, 0.5f,     -1.0f, 0.0f, 0.0f,  1.0f, 0.75f,
+        -0.5f, 0.5f, 0.5f,      -1.0f, 0.0f, 0.0f,  1.0f, 0.25f,
+
+        0.5f, 0.5f, 0.5f,       1.0f, 0.0f, 0.0f,   1.0f, 0.25f,
+        0.5f, 0.5f, -0.5f,      1.0f, 0.0f, 0.0f,   1.0f, 0.75f,
+        0.5f, -0.5f, -0.5f,     1.0f, 0.0f, 0.0f,   0.5f, 0.75f,
+        0.5f, -0.5f, -0.5f,     1.0f, 0.0f, 0.0f,   0.5f, 0.75f,
+        0.5f, -0.5f, 0.5f,      1.0f, 0.0f, 0.0f,   0.5f, 0.25f,
+        0.5f, 0.5f, 0.5f,       1.0f, 0.0f, 0.0f,   1.0f, 0.25f,
+
+        -0.5f, -0.5f, -0.5f,    0.0f, -1.0f, 0.0f,  0.0f, 0.75f,
+        0.5f, -0.5f, -0.5f,     0.0f, -1.0f, 0.0f,  0.5f, 0.75f,
+        0.5f, -0.5f, 0.5f,      0.0f, -1.0f, 0.0f,  0.5f, 0.25f,
+        0.5f, -0.5f, 0.5f,      0.0f, -1.0f, 0.0f,  0.5f, 0.25f,
+        -0.5f, -0.5f, 0.5f,     0.0f, -1.0f, 0.0f,  0.0f, 0.25f,
+        -0.5f, -0.5f, -0.5f,    0.0f, -1.0f, 0.0f,  0.0f, 0.75f,
+
         -0.5f, 0.5f, -0.5f,     0.0f, 1.0f, 0.0f,   0.0f, 0.25f,
         0.5f, 0.5f, -0.5f,      0.0f, 1.0f, 0.0f,   0.0f, 0.75f,
         0.5f, 0.5f, 0.5f,       0.0f, 1.0f, 0.0f,   0.5f, 0.75f,
@@ -111,7 +116,7 @@ int main(int argc, char **argv)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     // load image, create texture and generate mipmaps
     int width, height, nrChannels;
-    // The FileSystem::getPath(...) is part of the GitHub repository so we can find files on any IDE/platform; replace it with your own image path.
+
     unsigned char *data = stbi_load("coderox.png", &width, &height, &nrChannels, 0);
     if (data)
     {
@@ -132,17 +137,6 @@ int main(int argc, char **argv)
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glEnable(GL_DEPTH_TEST);
 
-        // // Draw a Red 1x1 Square centered at origin
-        // glBegin(GL_QUADS);           // Each set of 4 vertices form a quad
-        // glColor3f(1.0f, 0.0f, 0.0f); // Red
-        // glVertex2f(-0.5f, -0.5f);    // x, y
-        // glVertex2f(0.5f, -0.5f);
-        // glVertex2f(0.5f, 0.5f);
-        // glVertex2f(-0.5f, 0.5f);
-        // glEnd();
-
-        // glFlush(); // Render now
-
         // bind Texture
         glBindTexture(GL_TEXTURE_2D, texture);
 
@@ -162,8 +156,8 @@ int main(int argc, char **argv)
 
         // world transformation
         glm::mat4 world = glm::mat4(1.0f);
-        auto angle = glm::radians(145.0f);
-        world = glm::rotate(world, angle, glm::vec3( 1.0f, 1.0, 0.0f ));
+        auto angle = glm::radians(135.0f);
+        world = glm::rotate(world, angle, glm::vec3( 1.1f, 1.1, 0.0f ));
         ourShader.setMat4("model", world);
 
         // set the texture wrapping parameters
