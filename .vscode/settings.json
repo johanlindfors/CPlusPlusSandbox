@@ -1,4 +1,13 @@
 {
-    "cmake.generator": "Visual Studio 15 2017",
+    // "cmake.generator": "Visual Studio 15 2017",
     "C_Cpp.default.configurationProvider": "vector-of-bool.cmake-tools"
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "build/**": true
+    }
 }
