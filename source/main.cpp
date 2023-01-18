@@ -1,6 +1,7 @@
 /*
  * GL01Hello.cpp: Test OpenGL C/C++ Setup
  */
+#define GL_SILENCE_DEPRECATION
 #include <GLFW/glfw3.h>
 #include <GLES3/gl3.h>
 #include <GL/gl.h>
